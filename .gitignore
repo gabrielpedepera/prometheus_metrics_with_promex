@@ -35,3 +35,4 @@ prometheus_metrics_with_promex-*.tar
 npm-debug.log
 /assets/node_modules/
 
+/backup
