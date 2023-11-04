@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env
     links:
       - postgres
       - prometheus
@@ -19,10 +21,11 @@ services:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
   postgres:
     image: postgres:12
+    environment:
+      POSTGRES_DB: prometheus_metrics_with_promex
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
       - 5432:5432
     volumes:
-      - ./backup:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: prometheus_metrics_with_promex_dev
+      - ./pgdata:/var/lib/postgresql/data
