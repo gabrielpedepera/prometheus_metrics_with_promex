@@ -25,7 +25,7 @@ config :prometheus_metrics_with_promex, PrometheusMetricsWithPromex.PromEx,
   manual_metrics_start_delay: :no_delay,
   drop_metrics_groups: [],
   grafana: [
-    host: System.get_env("GRAFANA_URL") || "http://localhost:3000",
+    host: System.get_env("GRAFANA_URL") || "http://grafana:3000",
     # Authenticate via Basic Auth
     username: "admin",
     password: "admin",

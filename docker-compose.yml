@@ -4,9 +4,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    ports:
+      - 4000:4000
     env_file:
       - .env
-    links:
+    depends_on:
+      - grafana
       - postgres
       - prometheus
   grafana:
